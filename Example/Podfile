@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'DRCategories_Example' do
+  pod 'DRCategories', :path => '../'
+
+  target 'DRCategories_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
