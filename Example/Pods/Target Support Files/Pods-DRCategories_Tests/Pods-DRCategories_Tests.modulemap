@@ -1,0 +1,6 @@
+framework module Pods_DRCategories_Tests {
+  umbrella header "Pods-DRCategories_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

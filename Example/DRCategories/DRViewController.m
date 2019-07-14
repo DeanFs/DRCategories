@@ -7,6 +7,8 @@
 //
 
 #import "DRViewController.h"
+#import <DRCategories/NSDate+DRExtension.h>
+#import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DRViewController ()
 
@@ -14,10 +16,10 @@
 
 @implementation DRViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    kDR_LOG(@"date:%@", [[[NSDate date] firstLunarDayInThisYear] dateStringFromFormatterString:@"yyyyMMdd"]);
 }
 
 - (void)didReceiveMemoryWarning
