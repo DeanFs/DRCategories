@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 禁止在开始位置输入空格
 - (void)setTextLengthLimit:(NSInteger)limit;
 
+// 去除空格的字符串
+- (NSString *)validText;
+
 @end
 
 NS_ASSUME_NONNULL_END

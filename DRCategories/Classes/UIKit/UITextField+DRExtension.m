@@ -42,4 +42,9 @@
                                                            checkDoneBlock:nil];
 }
 
+// 去除空格的字符串
+- (NSString *)validText {
+    return [self.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
 @end
