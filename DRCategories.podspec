@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRCategories'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = '丰富的类扩展'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,15 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'DRCategories/Classes/**/*'
+  s.source_files = 'DRCategories/Classes/*.{h,m}'
+
+  s.subspec 'Foundation' do |ss|
+  	ss.source_files = 'DRCategories/Classes/Foundation/*.{h,m}'
+  end
+
+  s.subspec 'UIKit' do |ss|
+  	ss.source_files = 'DRCategories/Classes/UIKit/*.{h,m}'
+  end
   
   # s.resource_bundles = {
   #   'DRCategories' => ['DRCategories/Assets/*.png']
