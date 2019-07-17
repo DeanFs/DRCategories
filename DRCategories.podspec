@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRCategories'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = '丰富的类扩展'
 
 # This description is used to generate tags and improve search results.
@@ -33,7 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'DRCategories/Classes/*.{h,m}'
 
   s.subspec 'Foundation' do |ss|
-  	ss.source_files = 'DRCategories/Classes/Foundation/*.{h,m}'
+  	ss.source_files = 'DRCategories/Classes/Foundation/*.{h,m,mm}'
   end
 
   s.subspec 'UIKit' do |ss|
