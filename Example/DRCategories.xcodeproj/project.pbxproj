@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		139A62857474A89C2B65ECA5 /* Pods-DRCategories_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRCategories_Example.release.xcconfig"; path = "Target Support Files/Pods-DRCategories_Example/Pods-DRCategories_Example.release.xcconfig"; sourceTree = "<group>"; };
-		1CB6D2FA819E555F0100C334 /* DRCategories.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = DRCategories.podspec; path = ../DRCategories.podspec; sourceTree = "<group>"; };
+		1CB6D2FA819E555F0100C334 /* DRCategories.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DRCategories.podspec; path = ../DRCategories.podspec; sourceTree = "<group>"; };
 		3AB5C7588D0C2AF5C0654B41 /* Pods_DRCategories_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DRCategories_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A46BE35F6BCDE8818E57D0 /* Pods-DRCategories_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRCategories_Tests.release.xcconfig"; path = "Target Support Files/Pods-DRCategories_Tests/Pods-DRCategories_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* DRCategories_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRCategories_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,10 +61,10 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		61AB43C54552FD513E9AA2DD /* Pods-DRCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRCategories_Example.debug.xcconfig"; path = "Target Support Files/Pods-DRCategories_Example/Pods-DRCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		63E4FB4C91E00156D3BEF12D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		63E4FB4C91E00156D3BEF12D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A5FD315236A8819E74F42D0B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		A5FD315236A8819E74F42D0B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BE566C97BFCCDE8A4A235D0D /* Pods-DRCategories_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRCategories_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DRCategories_Tests/Pods-DRCategories_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFB5F6A980F8B9560D6EC4F7 /* Pods_DRCategories_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DRCategories_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,7 +103,6 @@
 				BE566C97BFCCDE8A4A235D0D /* Pods-DRCategories_Tests.debug.xcconfig */,
 				58A46BE35F6BCDE8818E57D0 /* Pods-DRCategories_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -248,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Dean_F;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = RRKA38P3VU;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -258,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -498,6 +501,7 @@
 			baseConfigurationReference = 61AB43C54552FD513E9AA2DD /* Pods-DRCategories_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RRKA38P3VU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DRCategories/DRCategories-Prefix.pch";
 				INFOPLIST_FILE = "DRCategories/DRCategories-Info.plist";
@@ -514,6 +518,7 @@
 			baseConfigurationReference = 139A62857474A89C2B65ECA5 /* Pods-DRCategories_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RRKA38P3VU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DRCategories/DRCategories-Prefix.pch";
 				INFOPLIST_FILE = "DRCategories/DRCategories-Info.plist";

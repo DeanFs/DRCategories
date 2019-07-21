@@ -17,5 +17,6 @@
 #import "NSObject+DRExtension.h"
 #import "NSString+DRExtension.h"
 #import "NSUserDefaults+DRExtension.h"
+#import "NSDateComponents+DRExtension.h"
 
 #endif /* DRFoundationCategories_h */

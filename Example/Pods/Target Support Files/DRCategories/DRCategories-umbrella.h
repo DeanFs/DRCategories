@@ -15,6 +15,7 @@
 #import "NSArray+DRExtension.h"
 #import "NSAttributedString+DRExtension.h"
 #import "NSDate+DRExtension.h"
+#import "NSDateComponents+DRExtension.h"
 #import "NSDictionary+DRExtension.h"
 #import "NSMutableSet+DRExtension.h"
 #import "NSNumber+DRExtension.h"
