@@ -7,7 +7,7 @@
 //
 
 #import "DRViewController.h"
-#import <DRCategories/NSDate+DRExtension.h>
+#import <DRCategories/DRCategories.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DRViewController ()
@@ -20,6 +20,9 @@
     [super viewDidLoad];
 	
     kDR_LOG(@"date:%@", [[[NSDate date] firstLunarDayInThisYear] dateStringFromFormatterString:@"yyyyMMdd"]);
+    
+    NSLog(@"%@", [NSDateComponents componentsFromTimeInterval:87000]);
+    NSLog(@"%@", [NSString descForTimeDuration:87000]);
 }
 
 - (void)didReceiveMemoryWarning
