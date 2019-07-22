@@ -15,7 +15,7 @@
 }
 
 + (UIFont *)dr_PingFangSC_MediumWithSize:(CGFloat)fontSize {
-    return  [UIFont fontWithName:@"PingFang-SC-Medium" size:fontSize];
+    return  [UIFont fontWithName:@"PingFangSC-Medium" size:fontSize];
 }
 
 + (UIFont *)dr_PingFangSC_LightWithSize:(CGFloat)fontSize {
