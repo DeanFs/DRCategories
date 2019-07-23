@@ -11,16 +11,14 @@
 
 + (instancetype)componentsFromTimeInterval:(int64_t)timeInterval {
     NSDateComponents *components = [NSDateComponents new];
-    if (timeInterval > 0) {
-        components.day = timeInterval / 86400;
-        timeInterval %= 86400;
-        
-        components.hour = timeInterval / 3600;
-        timeInterval %= 3600;
-        
-        components.minute = timeInterval / 60;
-        components.second = timeInterval % 60;
-    }
+    components.day = timeInterval / 86400;
+    timeInterval %= 86400;
+    
+    components.hour = timeInterval / 3600;
+    timeInterval %= 3600;
+    
+    components.minute = timeInterval / 60;
+    components.second = timeInterval % 60;
     return components;
 }
 
