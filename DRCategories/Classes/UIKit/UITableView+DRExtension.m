@@ -15,21 +15,21 @@
  使用nib来注册cell对象
  */
 - (void)registerNib:(NSString *)nibName {
-    [self registerNib:[UINib nibWithNibName:nibName bundle:KDR_CURRENT_BUNDLE] forCellReuseIdentifier:nibName];
+    [self registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:nibName];
 }
 
 /*
  使用nib来注册header对象
  */
 - (void)registerHeaderNib:(NSString *)nibName {
-    [self registerNib:[UINib nibWithNibName:nibName bundle:KDR_CURRENT_BUNDLE] forHeaderFooterViewReuseIdentifier:nibName];
+    [self registerNib:[UINib nibWithNibName:nibName bundle:nil] forHeaderFooterViewReuseIdentifier:nibName];
 }
 
 /*
  使用nib来注册footer对象
  */
 - (void)registerFooterNib:(NSString *)nibName {
-    [self registerNib:[UINib nibWithNibName:nibName bundle:KDR_CURRENT_BUNDLE] forHeaderFooterViewReuseIdentifier:nibName];
+    [self registerNib:[UINib nibWithNibName:nibName bundle:nil] forHeaderFooterViewReuseIdentifier:nibName];
 }
 
 /**
