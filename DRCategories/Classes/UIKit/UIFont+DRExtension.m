@@ -1,14 +1,14 @@
 //
-//  UIFont+DRExtentsion.m
+//  UIFont+DRExtension.m
 //  Records
 //
 //  Created by admin on 2018/11/14.
 //  Copyright © 2018年 DuoRong Technology Co., Ltd. All rights reserved.
 //
 
-#import "UIFont+DRExtentsion.h"
+#import "UIFont+DRExtension.h"
 
-@implementation UIFont (DRExtentsion)
+@implementation UIFont (DRExtension)
 
 + (UIFont *)dr_PingFangSC_RegularWithSize:(CGFloat)fontSize {
     return  [UIFont fontWithName:@"PingFangSC-Regular" size:fontSize];
