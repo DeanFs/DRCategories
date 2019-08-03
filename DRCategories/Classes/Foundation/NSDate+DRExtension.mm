@@ -1995,7 +1995,11 @@ static mutex _mutex;
 }
 
 + (NSDate *)minDate {
-    return [NSDate dateWithString:@"20000101" dateFormat:@"yyyyMMdd"];
+    return [NSDate dateWithString:@"19000101" dateFormat:@"yyyyMMdd"];
+}
+
++ (NSDate *)maxDate {
+    return [NSDate dateWithString:@"21001231" dateFormat:@"yyyyMMdd"];
 }
 
 //之前一天Date

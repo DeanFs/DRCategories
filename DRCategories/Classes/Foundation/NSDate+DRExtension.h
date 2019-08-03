@@ -368,6 +368,7 @@ static const NSInteger DRCalendarFirstDay = 2;
 - (NSDate *)nextYearLastDay;
 + (NSDate *)nextYearLastDay;
 + (NSDate *)minDate;
++ (NSDate *)maxDate;
 
 //之前一天
 - (NSDate *)lastDay;
