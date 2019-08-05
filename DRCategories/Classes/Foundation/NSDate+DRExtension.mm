@@ -1178,10 +1178,14 @@ static mutex _mutex;
 
 // 农历日期转公历日期
 + (NSDate *)dateFromLunarDate:(NSDate *)lunarDate leapMonth:(BOOL)leapMonth {
-    NSDateComponents *sCmp = [NSDate.calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay] fromDate:lunarDate];
+    NSDateComponents *sCmp = [self.calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay] fromDate:lunarDate];
     NSInteger wholeYear = sCmp.year + 2697;
     sCmp.era = wholeYear / 60;
     sCmp.year = wholeYear % 60;
+    if (sCmp.year == 0) {
+        sCmp.year = 60;
+        sCmp.era--;
+    }
     sCmp.leapMonth = leapMonth;
     return [self.lunarCalendar dateFromComponents:sCmp];
 }
@@ -1192,11 +1196,9 @@ static mutex _mutex;
         return;
     }
     NSDateComponents *lunarCmp = [self.lunarCalendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay] | NSCalendarUnitEra fromDate:date];
-    NSDateComponents *tempCmp = [[NSDateComponents alloc] init];
-    tempCmp.year = lunarCmp.era * 60 + lunarCmp.year - 2697;
-    tempCmp.month = lunarCmp.month;
-    tempCmp.day = lunarCmp.day;
-    complete([NSDate.calendar dateFromComponents:tempCmp], lunarCmp.leapMonth);
+    lunarCmp.year = lunarCmp.era * 60 + lunarCmp.year - 2697;
+    lunarCmp.era = 0;
+    complete([self.calendar dateFromComponents:lunarCmp], lunarCmp.leapMonth);
 }
 
 @end
