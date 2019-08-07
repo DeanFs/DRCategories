@@ -11,6 +11,7 @@
 #import "NSObject+DRExtension.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 #include <mutex>
+#import "NSDateComponents+DRExtension.h"
 
 using namespace std;
 static mutex _mutex;
@@ -2037,11 +2038,13 @@ static mutex _mutex;
 }
 
 + (NSDate *)minDate {
-    return [NSDate dateWithString:@"19000101" dateFormat:@"yyyyMMdd"];
+    NSDateComponents *cmp = [NSDateComponents componentsWithYear:1900 month:01 day:01];
+    return [self.calendar dateFromComponents:cmp];
 }
 
 + (NSDate *)maxDate {
-    return [NSDate dateWithString:@"21001231" dateFormat:@"yyyyMMdd"];
+    NSDateComponents *cmp = [NSDateComponents componentsWithYear:2100 month:12 day:31];
+    return [self.calendar dateFromComponents:cmp];
 }
 
 //之前一天Date
