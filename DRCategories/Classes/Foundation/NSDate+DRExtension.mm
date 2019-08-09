@@ -2043,7 +2043,7 @@ static mutex _mutex;
 }
 
 + (NSDate *)maxDate {
-    NSDateComponents *cmp = [NSDateComponents componentsWithYear:2100 month:12 day:31];
+    NSDateComponents *cmp = [NSDateComponents componentsWithYear:2070 month:12 day:31];
     return [self.calendar dateFromComponents:cmp];
 }
 
