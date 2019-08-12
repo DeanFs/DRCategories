@@ -1197,9 +1197,11 @@ static mutex _mutex;
         return;
     }
     NSDateComponents *lunarCmp = [self.lunarCalendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay] | NSCalendarUnitEra fromDate:date];
-    lunarCmp.year = lunarCmp.era * 60 + lunarCmp.year - 2697;
-    lunarCmp.era = 0;
-    complete([self.calendar dateFromComponents:lunarCmp], lunarCmp.leapMonth);
+    NSDateComponents *solarCmp = [NSDateComponents new];
+    solarCmp.year = lunarCmp.era * 60 + lunarCmp.year - 2697;
+    solarCmp.month = lunarCmp.month;
+    solarCmp.day = lunarCmp.day;
+    complete([self.calendar dateFromComponents:solarCmp], lunarCmp.leapMonth);
 }
 
 @end

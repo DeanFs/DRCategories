@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRCategories'
-  s.version          = '0.1.15'
+  s.version          = '0.1.16'
   s.summary          = '丰富的类扩展'
 
 # This description is used to generate tags and improve search results.
