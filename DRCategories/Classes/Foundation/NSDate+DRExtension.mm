@@ -2040,12 +2040,12 @@ static mutex _mutex;
 }
 
 + (NSDate *)minDate {
-    NSDateComponents *cmp = [NSDateComponents componentsWithYear:1900 month:01 day:01];
+    NSDateComponents *cmp = [NSDateComponents componentsWithYear:1970 month:01 day:01];
     return [self.calendar dateFromComponents:cmp];
 }
 
 + (NSDate *)maxDate {
-    NSDateComponents *cmp = [NSDateComponents componentsWithYear:2070 month:12 day:31];
+    NSDateComponents *cmp = [NSDateComponents componentsWithYear:2038 month:12 day:31];
     return [self.calendar dateFromComponents:cmp];
 }
 
