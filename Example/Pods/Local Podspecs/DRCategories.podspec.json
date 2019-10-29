@@ -1,6 +1,6 @@
 {
   "name": "DRCategories",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "summary": "丰富的类扩展",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRCategories",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRCategories.git",
-    "tag": "0.1.17"
+    "tag": "0.1.18"
   },
   "platforms": {
     "ios": "8.0"

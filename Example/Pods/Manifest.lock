@@ -1,15 +1,15 @@
 PODS:
-  - DRCategories (0.1.17):
-    - DRCategories/Foundation (= 0.1.17)
-    - DRCategories/UIKit (= 0.1.17)
+  - DRCategories (0.1.18):
+    - DRCategories/Foundation (= 0.1.18)
+    - DRCategories/UIKit (= 0.1.18)
     - DRMacroDefines
     - DRSandboxManager
     - pop
-  - DRCategories/Foundation (0.1.17):
+  - DRCategories/Foundation (0.1.18):
     - DRMacroDefines
     - DRSandboxManager
     - pop
-  - DRCategories/UIKit (0.1.17):
+  - DRCategories/UIKit (0.1.18):
     - DRMacroDefines
     - DRSandboxManager
     - pop
@@ -31,7 +31,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DRCategories: ac753c63818ad412989098115eb442798c18fea3
+  DRCategories: 9dc993a28182d13716de8b47c1626d90d317108e
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
   DRSandboxManager: 2a48ca41b22edfc39dd2f66abd5a99e777410c61
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
