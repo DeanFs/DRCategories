@@ -23,6 +23,14 @@
     
     NSLog(@"%@", [NSDateComponents componentsFromTimeInterval:87000]);
     NSLog(@"%@", [NSString descForTimeDuration:87000]);
+
+
+    NSArray *datas = @[@(20), @(22), @(3), @(5), @(30), @(40), @(35)];
+    kDR_LOG(@"开始：%@", datas);
+    datas = [datas fbl_filter:^BOOL(NSNumber * _Nonnull value) {
+        return value.intValue > 20;
+    }];
+    kDR_LOG(@"结束：%@", datas);
 }
 
 - (void)didReceiveMemoryWarning
