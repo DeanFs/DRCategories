@@ -1,15 +1,15 @@
 PODS:
-  - DRCategories (0.1.18):
-    - DRCategories/Foundation (= 0.1.18)
-    - DRCategories/UIKit (= 0.1.18)
+  - DRCategories (0.1.19):
+    - DRCategories/Foundation (= 0.1.19)
+    - DRCategories/UIKit (= 0.1.19)
     - DRMacroDefines
     - DRSandboxManager
     - pop
-  - DRCategories/Foundation (0.1.18):
+  - DRCategories/Foundation (0.1.19):
     - DRMacroDefines
     - DRSandboxManager
     - pop
-  - DRCategories/UIKit (0.1.18):
+  - DRCategories/UIKit (0.1.19):
     - DRMacroDefines
     - DRSandboxManager
     - pop
@@ -31,11 +31,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DRCategories: 9dc993a28182d13716de8b47c1626d90d317108e
+  DRCategories: 8585280966e0c7a0a7b2c926df9a8beca80158c8
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
   DRSandboxManager: 2a48ca41b22edfc39dd2f66abd5a99e777410c61
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
 
 PODFILE CHECKSUM: 7ebf254f5b2e19d06221dea38b7c11f292c002dc
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
