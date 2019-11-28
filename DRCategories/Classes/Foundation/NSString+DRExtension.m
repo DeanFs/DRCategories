@@ -109,7 +109,7 @@
 /// 阿里云图片链接限定图片短边的长度，等比缩放
 /// @param width 短边长度
 - (NSString *)ossImageUrlSetImageSmallSideWidth:(CGFloat)width {
-    return [NSString stringWithFormat:@"%@?x-oss-process=image/resize,s_%d", self, (int)floorf(width)];
+    return [NSString stringWithFormat:@"%@?x-oss-process=image/resize,s_%d", self, (int)floorf(width*[UIScreen mainScreen].scale)];
 }
 
 @end
