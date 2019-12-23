@@ -31,6 +31,10 @@
         return value.intValue > 20;
     }];
     kDR_LOG(@"结束：%@", datas);
+    
+    kDR_LOG(@"%@", [@"67874738343" numberFormatWithMaxDecimalCount:2]);
+    kDR_LOG(@"%@", [@"526663.70" numberFormatWithMaxDecimalCount:2]);
+    kDR_LOG(@"%@", [@"63733649.888888" numberFormatWithMaxDecimalCount:2]);
 }
 
 - (void)didReceiveMemoryWarning

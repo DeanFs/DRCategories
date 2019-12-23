@@ -163,11 +163,13 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/DRCategories/DRCategories.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRSandboxManager/DRSandboxManager.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RegExCategories/RegExCategories.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/DRCategories/DRCategories.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRSandboxManager/DRSandboxManager.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RegExCategories/RegExCategories.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
