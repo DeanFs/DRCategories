@@ -107,32 +107,12 @@
     return originString;
 }
 
-- (NSString *)numberFormatWithMaxDecimalCount:(NSInteger)maxDecimalCount {
+- (NSString *)numberFormatWithMaxDecimalCount:(int)maxDecimalCount {
     NSString *numString = [RX(@"\\d*\\.?\\d*") firstMatch:self];
-    NSString *integerNum = numString;
-    NSString *decimalNum = @"";
-    if ([numString containsString:@"."]) {
-        NSArray *arr = [numString componentsSeparatedByString:@"."];
-        integerNum = arr[0];
-        decimalNum = arr[1];
-    }
-    NSInteger length = integerNum.length;
-    NSMutableString *formatString = [NSMutableString string];
-    for (NSInteger i=0; i<length; i++) {
-        if (formatString.length > 0 && i % 3 == 0) {
-            [formatString insertString:@"," atIndex:0];
-        }
-        [formatString insertString:[integerNum substringWithRange:NSMakeRange(length-i-1, 1)] atIndex:0];
-    }
-    if (decimalNum.length > 0) {
-        [formatString appendString:@"."];
-        if (decimalNum.length > maxDecimalCount) {
-            [formatString appendString:[decimalNum substringToIndex:maxDecimalCount]];
-        } else {
-            [formatString appendString:decimalNum];
-        }
-    }
-    return formatString;
+    NSDecimalNumber *num = [NSDecimalNumber decimalNumberWithString:numString];
+    return [num stringValueWithDigit:maxDecimalCount isForce:NO block:^(NSNumberFormatter *formt) {
+        [formt setUsesGroupingSeparator:YES];
+    }];
 }
 
 /// 阿里云图片链接限定图片短边的长度，等比缩放
