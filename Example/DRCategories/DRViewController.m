@@ -35,6 +35,7 @@
     kDR_LOG(@"%@", [@"67874738343" numberFormatWithMaxDecimalCount:2]);
     kDR_LOG(@"%@", [@"526663.70" numberFormatWithMaxDecimalCount:2]);
     kDR_LOG(@"%@", [@"63733649.888888" numberFormatWithMaxDecimalCount:2]);
+    kDR_LOG(@"%@", [@"-777888888888.25665673783" numberFormatWithMaxDecimalCount:5]);
 }
 
 - (void)didReceiveMemoryWarning

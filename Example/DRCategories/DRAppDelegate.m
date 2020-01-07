@@ -14,7 +14,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    NSLog(@"%@", [@"777888888888.25665673783" numberFormatWithMaxDecimalCount:5]);
     return YES;
 }
 
