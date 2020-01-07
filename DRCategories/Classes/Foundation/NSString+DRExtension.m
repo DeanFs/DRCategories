@@ -108,7 +108,7 @@
 }
 
 - (NSString *)numberFormatWithMaxDecimalCount:(int)maxDecimalCount {
-    NSString *numString = [RX(@"\\d*\\.?\\d*") firstMatch:self];
+    NSString *numString = [RX(@"[-+]?\\d*\\.?\\d*") firstMatch:self];
     NSDecimalNumber *num = [NSDecimalNumber decimalNumberWithString:numString];
     return [num stringValueWithDigit:maxDecimalCount isForce:NO block:^(NSNumberFormatter *formt) {
         [formt setUsesGroupingSeparator:YES];
