@@ -1,17 +1,35 @@
 PODS:
-  - DRCategories (0.1.23):
-    - DRCategories/Foundation (= 0.1.23)
-    - DRCategories/UIKit (= 0.1.23)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - DRCategories (0.2.0):
+    - BlocksKit
+    - DRCategories/Foundation (= 0.2.0)
+    - DRCategories/UIKit (= 0.2.0)
     - DRMacroDefines
     - DRSandboxManager
     - pop
     - RegExCategories
-  - DRCategories/Foundation (0.1.23):
+  - DRCategories/Foundation (0.2.0):
+    - BlocksKit
     - DRMacroDefines
     - DRSandboxManager
     - pop
     - RegExCategories
-  - DRCategories/UIKit (0.1.23):
+  - DRCategories/UIKit (0.2.0):
+    - BlocksKit
     - DRMacroDefines
     - DRSandboxManager
     - pop
@@ -26,6 +44,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - BlocksKit
     - DRMacroDefines
     - DRSandboxManager
     - pop
@@ -36,7 +55,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DRCategories: 37574f660f10e6139601e374f1e1a0cd9896bf5e
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  DRCategories: 650f64983de2221f406da2888c8c61ab5c57571f
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
   DRSandboxManager: 2a48ca41b22edfc39dd2f66abd5a99e777410c61
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
@@ -44,4 +64,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7ebf254f5b2e19d06221dea38b7c11f292c002dc
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
