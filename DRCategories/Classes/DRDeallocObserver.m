@@ -8,7 +8,7 @@
 
 #import "DRDeallocObserver.h"
 #import <DRMacroDefines/DRMacroDefines.h>
-#import <BlocksKit/NSObject+BKAssociatedObjects.h>
+#import <objc/runtime.h>
 
 @interface DRDeallocObserver ()  {
     __unsafe_unretained id m_target;
@@ -55,7 +55,7 @@
     obs.target = target;
     obs.parasitifer = parasitifer;
     obs.deallocBlock2 = block;
-    [parasitifer bk_associateValue:obs withKey:_cmd];
+    objc_setAssociatedObject(parasitifer, _cmd, obs, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
