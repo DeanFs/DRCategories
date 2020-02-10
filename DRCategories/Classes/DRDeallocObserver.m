@@ -37,6 +37,13 @@
     m_parasitifer = parasitifer;
 }
 
+- (void)removeAssociate {
+    self.deallocBlock = nil;
+    self.deallocBlock2 = nil;
+    m_target = nil;
+    m_parasitifer = nil;
+}
+
 - (void)dealloc {
     kDR_SAFE_BLOCK(self.deallocBlock, m_target);
     kDR_SAFE_BLOCK(self.deallocBlock2, m_target, m_parasitifer);
@@ -48,14 +55,15 @@
 /// @param parasitifer 宿主
 /// @param target 需要跟随宿主销毁而做一些操作的对象，可为nil
 /// @param block 宿主销毁的回调
-+ (void)associateParasitifer:(id)parasitifer
-                      target:(id)target
-                deallocBlock:(void(^)(id target, id parasitifer))block {
++ (instancetype)associateParasitifer:(id)parasitifer
+                              target:(id)target
+                        deallocBlock:(void(^)(id target, id parasitifer))block {
     DRDeallocObserver *obs = [DRDeallocObserver new];
     obs.target = target;
     obs.parasitifer = parasitifer;
     obs.deallocBlock2 = block;
     objc_setAssociatedObject(parasitifer, _cmd, obs, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    return obs;
 }
 
 @end

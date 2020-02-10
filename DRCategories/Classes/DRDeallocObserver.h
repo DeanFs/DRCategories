@@ -16,8 +16,10 @@
 /// @param parasitifer 宿主
 /// @param target 需要跟随宿主销毁而做一些操作的对象，可为nil
 /// @param block 宿主销毁的回调
-+ (void)associateParasitifer:(id)parasitifer
-                      target:(id)target
-                deallocBlock:(void(^)(id target, id parasitifer))block;
++ (instancetype)associateParasitifer:(id)parasitifer
+                              target:(id)target
+                        deallocBlock:(void(^)(id target, id parasitifer))block;
+
+- (void)removeAssociate;
 
 @end
