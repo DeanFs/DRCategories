@@ -1197,7 +1197,7 @@ static mutex _mutex;
 }
 
 + (NSInteger)weekFirstday {
-    NSInteger weekFirstday = [NSUserDefaults integerForKey:kDRCalendarWeekFirstdayKey];
+    NSInteger weekFirstday = [[NSUserDefaults groupDefaults] integerForKey:kDRCalendarWeekFirstdayKey];
     if (weekFirstday < 1 || weekFirstday > 7) {
         weekFirstday = 2; // 默认周一
     }

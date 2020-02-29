@@ -5,7 +5,7 @@
 //  Created by 冯生伟 on 2019/3/8.
 //
 
-#define kUserGroupNameKey @"kUserGroupNameKey"
+#define kUserGroupName @"group.com.huashengweilai.weilaiguanjia"
 
 #import "NSUserDefaults+DRExtension.h"
 
@@ -94,26 +94,14 @@
 }
 
 #pragma mark - 自定义组设置
-+ (void)setUserDefaultGoupKey:(NSString *)groupKey {
-    [[NSUserDefaults standardUserDefaults] setObject:groupKey forKey:kUserGroupNameKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 + (NSUserDefaults *)groupDefaults {
-    NSString *groupName = [[NSUserDefaults standardUserDefaults] objectForKey:kUserGroupNameKey];
-    if (groupName.length == 0) {
-        return nil;
-    }
-    return [[NSUserDefaults alloc] initWithSuiteName:groupName];
+    return [[NSUserDefaults alloc] initWithSuiteName:kUserGroupName];
 }
 
 + (void)clean {
-    NSString *groupName = [[NSUserDefaults standardUserDefaults] objectForKey:kUserGroupNameKey];
-    if (groupName.length > 0) {
-        NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:groupName];
-        [userDefaults removePersistentDomainForName:groupName];
-        [userDefaults synchronize];
-    }
+    [[NSUserDefaults groupDefaults] removePersistentDomainForName:kUserGroupName];
+    [[NSUserDefaults groupDefaults] synchronize];
+    
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     [[NSUserDefaults standardUserDefaults] synchronize];

@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setBool:(BOOL)value forKey:(NSString *)defaultName;
 
 /// 设置groupKey
-+ (void)setUserDefaultGoupKey:(NSString *)groupKey;
++ (NSUserDefaults *)groupDefaults;
 /// 清除所有userDefault
 + (void)clean;
 
