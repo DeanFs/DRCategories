@@ -208,9 +208,11 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 
 
 #pragma mark - 基于日历扩展
-//1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
-static const NSInteger DRCalendarFirstDay = 2;
 @interface NSDate (DRCalendar)
+
+//1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
++ (void)setCalendarWeekFirstday:(NSInteger)weekFirstday;
++ (NSInteger)weekFirstday;
 
 //日期相等
 - (BOOL)dateEqualTo:(NSDate *)date;
@@ -288,11 +290,6 @@ static const NSInteger DRCalendarFirstDay = 2;
 //获取当前日期前后N个月 - 农历
 - (NSArray<NSDate *> *)lunarMonthDateArrayWithCount:(NSInteger)count;
 
-//公历转农历
-- (void)solarToLunarWithComplelte:(void (^)(NSInteger year, NSInteger month, NSInteger , BOOL leapMonth))complete;
-
-//农历转公历
-- (NSDate *)lunarToSolarWithLeap:(BOOL)isLeap;
 @end
 
 
