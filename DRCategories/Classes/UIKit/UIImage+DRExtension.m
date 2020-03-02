@@ -379,10 +379,11 @@
                           inset:(UIEdgeInsets)inset
                        complete:(void(^)(UIImage *image))complete {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIImageView *coverView = [[UIImageView alloc] initWithImage:[UIImage imageFromView:scrollView]];
-        coverView.backgroundColor = bgColor;
-        coverView.frame = scrollView.frame;
-        [scrollView.superview insertSubview:coverView aboveSubview:scrollView];
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        UIImageView *coverView = [[UIImageView alloc] initWithImage:[UIImage imageFromView:keyWindow]];
+        coverView.userInteractionEnabled = YES;
+        coverView.frame = keyWindow.bounds;
+        [keyWindow addSubview:coverView];
         CGPoint oldOffset = scrollView.contentOffset;
         
         CGSize contentSize = scrollView.contentSize;
@@ -427,18 +428,29 @@
             });
         };
         
-        scrollView.contentOffset = CGPointZero;
-        if ([scrollView isKindOfClass:[UICollectionView class]]) {
-            [self collectionViewAppendViewCells:(UICollectionView *)scrollView inset:imageInset complete:^(NSArray<DRImageAppendImageView *> *collectionViewAppendViews) {
-                appendAction(collectionViewAppendViews);
-            }];
-        } else if ([scrollView isKindOfClass:[UITableView class]]) {
-            appendAction([self tableViewAppendViewCells:(UITableView *)scrollView
-                                                  inset:imageInset]);
-        } else {
-            appendAction([self scrollViewAppendViewCells:scrollView
-                                                   inset:imageInset]);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            scrollView.contentOffset = CGPointZero;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([scrollView isKindOfClass:[UICollectionView class]]) {
+                    UICollectionView *collectionView = (UICollectionView *)scrollView;
+                    if ([collectionView numberOfSections] > 0) {
+                        [self collectionViewAppendViewCells:collectionView inset:imageInset complete:^(NSArray<DRImageAppendImageView *> *collectionViewAppendViews) {
+                            appendAction(collectionViewAppendViews);
+                        }];
+                        return;
+                    }
+                } else if ([scrollView isKindOfClass:[UITableView class]]) {
+                    UITableView *tableView = (UITableView *)scrollView;
+                    if ([tableView numberOfSections] > 0) {
+                        appendAction([self tableViewAppendViewCells:tableView
+                                                              inset:imageInset]);
+                        return;
+                    }
+                }
+                appendAction([self scrollViewAppendViewCells:scrollView
+                                                       inset:imageInset]);
+            });
+        });
     });
 }
 
