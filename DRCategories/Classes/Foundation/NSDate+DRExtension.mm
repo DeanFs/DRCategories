@@ -2427,7 +2427,7 @@ static mutex _mutex;
 }
 
 // 获取周标题，如“周一”，以周起始日开始排序
-+ (NSArray<NSString *> *)weekDayitleArray {
++ (NSArray<NSString *> *)weekdayTitleArray {
     NSArray *titleArray = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六",];
     NSInteger firstWeekDay = [self weekFirstday] - 1;
     NSMutableArray *restltArray = [NSMutableArray array];

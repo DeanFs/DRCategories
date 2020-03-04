@@ -476,7 +476,7 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 + (NSArray<NSString *> *)weekDayNumberTitleArray;
 
 // 获取周标题，如“周一”，以周起始日开始排序
-+ (NSArray<NSString *> *)weekDayitleArray;
++ (NSArray<NSString *> *)weekdayTitleArray;
 
 + (NSArray<NSDate *> *)monthDateArrayWithStartYear:(NSInteger)startYear
                                            endYear:(NSInteger)endYear;
