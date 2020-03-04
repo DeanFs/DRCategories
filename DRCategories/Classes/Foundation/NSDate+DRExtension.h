@@ -338,10 +338,12 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 - (NSInteger)hour;
 //日
 - (NSInteger)day;
-//星期几
+// 星期几 1.周日. 2.周一. 3.周二. 4.周三. 5.周四. 6.周五. 7.周六.
 - (NSInteger)weekday;
-//中国式星期几
+// 中国式星期几，1.周一，2.周二，3.周三，4.周四，5.周五，6.周六，7.周日
 - (NSInteger)chinaWeekday;
+//相对周起始日的序号，周起始日为1，取值1~7
+- (NSInteger)weekdayIndex;
 //星期几 - 中文
 - (NSString *)weekdayString;
 //第几星期 - 月份
@@ -469,8 +471,11 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 //获取某一日期之后(含该月份)的N个月 - 公历
 - (NSArray<NSDate *> *)monthDateArrayNextWithCount:(NSInteger)count;
 
-//获取星期几标题数组
-+ (NSArray<NSString *> *)weekDayTitleArray;
+// 获取星期几标题数组，如“一”，以周起始日开始排序
++ (NSArray<NSString *> *)weekDayNumberTitleArray;
+
+// 获取周标题，如“周一”，以周起始日开始排序
++ (NSArray<NSString *> *)weekDayitleArray;
 
 + (NSArray<NSDate *> *)monthDateArrayWithStartYear:(NSInteger)startYear
                                            endYear:(NSInteger)endYear;

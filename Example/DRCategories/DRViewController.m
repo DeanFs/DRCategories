@@ -36,6 +36,13 @@
     kDR_LOG(@"%@", [@"526663.70" numberFormatWithMaxDecimalCount:2]);
     kDR_LOG(@"%@", [@"63733649.888888" numberFormatWithMaxDecimalCount:2]);
     kDR_LOG(@"%@", [@"-777888888888.25665673783" numberFormatWithMaxDecimalCount:5]);
+    
+    // 1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
+    [NSDate setCalendarWeekFirstday:6];
+    NSDate *today = [NSDate date];
+    
+    NSLog(@"firstDay:%@", [today.firstDayInThisWeek dateStringFromFormatterString:@"yyyy-MM-dd"]);
+    NSLog(@"week=%ld  weekIndex=%ld", [today weekday], [today weekdayIndex]);
 }
 
 - (void)didReceiveMemoryWarning
