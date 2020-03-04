@@ -298,7 +298,8 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 
 //时间戳 从1970年开始
 - (int64_t)timestamp;
-
+// 是否周末
+- (BOOL)isWeekend;
 //是否今天
 - (BOOL)isToday;
 //是否今个星期

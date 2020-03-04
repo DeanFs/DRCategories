@@ -1626,7 +1626,11 @@ static mutex _mutex;
 
 @implementation NSDate (DRSolarCalendar)
 #pragma mark - 判断
-
+// 是否周末
+- (BOOL)isWeekend {
+    NSInteger weekday = [self weekday];
+    return weekday == 1 || weekday == 7;
+}
 //是否今天
 - (BOOL)isToday {
     return [self isEqualDayToDate:[NSDate date]];

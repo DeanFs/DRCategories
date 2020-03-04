@@ -43,6 +43,9 @@
     
     NSLog(@"firstDay:%@", [today.firstDayInThisWeek dateStringFromFormatterString:@"yyyy-MM-dd"]);
     NSLog(@"week=%ld  weekIndex=%ld", [today weekday], [today weekdayIndex]);
+    
+    NSDate *date = [NSDate dateWithDateString:@"20200309" dateFormat:@"yyyyMMdd"];
+    NSLog(@"是否周末：%d", [date isWeekend]);
 }
 
 - (void)didReceiveMemoryWarning
