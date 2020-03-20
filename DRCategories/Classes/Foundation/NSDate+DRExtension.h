@@ -478,6 +478,15 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 // 获取周标题，如“周一”，以周起始日开始排序
 + (NSArray<NSString *> *)weekdayTitleArray;
 
+/// 依据周起始日，获取周排序，
+/// 如周起始日是周六，则
+/// numbers: 6,7,1,2,3,4,5
+/// numberTitles: 六，日，一， 二，三，四，五
+/// weekTitles: 周六，周日，周一， 周二，周三，周四，周五
++ (void)getWeekDayOrderComplete:(void(^)(NSArray<NSNumber *> *numbers,
+                                         NSArray<NSString *> *numberTitles,
+                                         NSArray<NSString *> *weekTitles))complete;
+
 + (NSArray<NSDate *> *)monthDateArrayWithStartYear:(NSInteger)startYear
                                            endYear:(NSInteger)endYear;
 

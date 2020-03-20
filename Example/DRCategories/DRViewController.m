@@ -38,7 +38,7 @@
     kDR_LOG(@"%@", [@"-777888888888.25665673783" numberFormatWithMaxDecimalCount:5]);
     
     // 1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
-    [NSDate setCalendarWeekFirstday:6];
+    [NSDate setCalendarWeekFirstday:7];
     NSDate *today = [NSDate date];
     
     NSLog(@"firstDay:%@", [today.firstDayInThisWeek dateStringFromFormatterString:@"yyyy-MM-dd"]);
@@ -46,6 +46,10 @@
     
     NSDate *date = [NSDate dateWithDateString:@"20200309" dateFormat:@"yyyyMMdd"];
     NSLog(@"是否周末：%d", [date isWeekend]);
+    
+    [NSDate getWeekDayOrderComplete:^(NSArray<NSNumber *> *numbers, NSArray<NSString *> *numberTitles, NSArray<NSString *> *weekTitles) {
+        kDR_LOG(@"\n%@\n%@\n%@", numbers, numberTitles, weekTitles);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

@@ -2441,6 +2441,39 @@ static mutex _mutex;
     return restltArray;
 }
 
+/// 依据周起始日，获取周排序，
+/// 如周起始日是周六，则
+/// numbers: 6,7,1,2,3,4,5
+/// numberTitles: 六，日，一， 二，三，四，五
+/// weekTitles: 周六，周日，周一， 周二，周三，周四，周五
++ (void)getWeekDayOrderComplete:(void(^)(NSArray<NSNumber *> *numbers,
+                                         NSArray<NSString *> *numberTitles,
+                                         NSArray<NSString *> *weekTitles))complete; {
+    if (complete == nil) {
+        return;
+    }
+    NSArray *weekTitles = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六",];
+    NSArray *numTitles = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六",];
+    NSArray *nums = @[@7, @1, @2, @3, @4, @5, @6];
+    NSMutableArray *orderWeekTitles = [NSMutableArray array];
+    NSMutableArray *orderNums = [NSMutableArray array];
+    NSMutableArray *orderNumTitles = [NSMutableArray array];
+    
+    NSInteger firstWeekDay = [self weekFirstday] - 1;
+    for (NSInteger i = firstWeekDay; i < 7; i++) {
+        [orderWeekTitles addObject:weekTitles[i]];
+        [orderNums addObject:nums[i]];
+        [orderNumTitles addObject:numTitles[i]];
+    }
+    NSInteger count = 7 - orderNumTitles.count;
+    for (NSInteger i = 0; i < count; i++) {
+        [orderWeekTitles addObject:weekTitles[i]];
+        [orderNums addObject:nums[i]];
+        [orderNumTitles addObject:numTitles[i]];
+    }
+    complete(orderNums, orderNumTitles, orderWeekTitles);
+}
+
 /**
  更改date的小时分钟，并将秒置0
  
