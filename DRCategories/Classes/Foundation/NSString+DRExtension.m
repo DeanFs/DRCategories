@@ -109,18 +109,23 @@
 
 - (NSString *)numberFormatWithMaxDecimalCount:(int)maxDecimalCount
                                       isForce:(BOOL)isForce {
-    NSInteger count = maxDecimalCount;
+    int count = maxDecimalCount;
     NSString *numString = [RX(@"[-+]?\\d*\\.?\\d*") firstMatch:self];
+    BOOL containDot = [numString containsString:@"."];
     if (!isForce) {
-        NSArray<NSString *> *arr = [numString componentsSeparatedByString:@"."];
-        if (arr.count == 2) {
-            count = MIN(maxDecimalCount, arr.lastObject.length);
+        count = 0;
+        if (containDot) {
+            count = MIN(maxDecimalCount, (int)[numString componentsSeparatedByString:@"."].lastObject.length);
         }
     }
     NSDecimalNumber *num = [NSDecimalNumber decimalNumberWithString:numString];
-    return [num stringValueWithDigit:count isForce:YES block:^(NSNumberFormatter *formt) {
+    NSString *result = [num stringValueWithDigit:count isForce:YES block:^(NSNumberFormatter *formt) {
         [formt setUsesGroupingSeparator:YES];
     }];
+    if (containDot && ![result containsString:@"."]) {
+        result = [result stringByAppendingString:@"."];
+    }
+    return result;
 }
 
 /// 阿里云图片链接限定图片短边的长度，等比缩放
