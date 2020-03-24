@@ -107,10 +107,18 @@
     return originString;
 }
 
-- (NSString *)numberFormatWithMaxDecimalCount:(int)maxDecimalCount {
+- (NSString *)numberFormatWithMaxDecimalCount:(int)maxDecimalCount
+                                      isForce:(BOOL)isForce {
+    NSInteger count = maxDecimalCount;
     NSString *numString = [RX(@"[-+]?\\d*\\.?\\d*") firstMatch:self];
+    if (!isForce) {
+        NSArray<NSString *> *arr = [numString componentsSeparatedByString:@"."];
+        if (arr.count == 2) {
+            count = MIN(maxDecimalCount, arr.lastObject.length);
+        }
+    }
     NSDecimalNumber *num = [NSDecimalNumber decimalNumberWithString:numString];
-    return [num stringValueWithDigit:maxDecimalCount isForce:NO block:^(NSNumberFormatter *formt) {
+    return [num stringValueWithDigit:count isForce:YES block:^(NSNumberFormatter *formt) {
         [formt setUsesGroupingSeparator:YES];
     }];
 }

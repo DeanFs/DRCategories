@@ -154,9 +154,32 @@
                           lineWidth:(CGFloat)lineWidth
                           lineColor:(UIColor *)lineColor;
 
+/// 创建指定纯色底，白色字图片
+/// @param bgColor 图片底色
+/// @param size 图片尺寸
+/// @param text 文字
+/// @param lineBreakMode 文字换行模式
++ (UIImage *)imageWithBgColor:(UIColor *)bgColor
+                         size:(CGSize)size
+                         text:(NSString *)text
+                         mode:(NSLineBreakMode)lineBreakMode;
+
+/// 构建纯色底，指定颜色图片文字图片
+/// @param bgColor 底色
+/// @param textColor 文字颜色
+/// @param size 图片尺寸
+/// @param text 文字内容
+/// @param lineBreakMode 文字换行模式
++ (UIImage *)imageWithBgColor:(UIColor *)bgColor
+                    textColor:(UIColor *)textColor
+                       size:(CGSize)size
+                       text:(NSString *)text
+                       mode:(NSLineBreakMode)lineBreakMode;
+
 #pragma mark - 截图
 // 对当前屏幕截图截出屏幕大小的图
 + (UIImage *)screenshot;
+
 // 对当前屏幕截图并按指定比例缩放
 + (UIImage *)screenshotWithScale:(float)scale;
 
@@ -206,14 +229,38 @@
 #pragma mark - utils
 // 按比例压缩图片大小
 - (UIImage*)compressWithScale:(CGFloat)scale;
+
 // 更改图片颜色
 - (UIImage *)changeColorTo:(UIColor *)color;
+
+// 图片裁剪圆角
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius;
+
+// 裁剪圆角并绘制线圈
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius
+                          borderWidth:(CGFloat)borderWidth
+                          borderColor:(UIColor *)borderColor;
+
+// 裁剪圆角并绘制线圈
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius
+                              corners:(UIRectCorner)corners
+                          borderWidth:(CGFloat)borderWidth
+                          borderColor:(UIColor *)borderColor
+                       borderLineJoin:(CGLineJoin)borderLineJoin;
+
+// 文字图片重置大小
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize
+                      text:(NSString *)text
+                     color:(UIColor *)color;
 
 #pragma mark - Cache
 // 缓存图片到沙盒
 + (UIImage *)imageForKey:(NSString *)key;
+
 // 从沙盒获取图片
 + (void)cacheImage:(UIImage *)image forKey:(NSString *)key;
+
 // 清空沙盒中的缓存
 + (void)cleanCache;
 
@@ -232,7 +279,10 @@
  *
  *  @return 加完水印的图片
  */
-- (UIImage*)imageWaterMarkWithImage:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha;
+- (UIImage*)imageWaterMarkWithImage:(UIImage *)image
+                          imageRect:(CGRect)imgRect
+                              alpha:(CGFloat)alpha;
+
 /**
  *  同上
  *
@@ -242,7 +292,9 @@
  *
  *  @return 同上
  */
-- (UIImage*)imageWaterMarkWithImage:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha;
+- (UIImage*)imageWaterMarkWithImage:(UIImage*)image
+                         imagePoint:(CGPoint)imgPoint
+                              alpha:(CGFloat)alpha;
 
 /**
  *  给图片加文字水印
@@ -253,7 +305,10 @@
  *
  *  @return 加完水印文字的图片
  */
-- (UIImage*)imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attri;
+- (UIImage*)imageWaterMarkWithString:(NSString*)str
+                                rect:(CGRect)strRect
+                           attribute:(NSDictionary *)attri;
+
 /**
  *  同上
  *
@@ -263,7 +318,10 @@
  *
  *  @return 同上
  */
-- (UIImage*)imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attri;
+- (UIImage*)imageWaterMarkWithString:(NSString*)str
+                               point:(CGPoint)strPoint
+                           attribute:(NSDictionary*)attri;
+
 /**
  *  返回加水印文字和图片的图片
  *
@@ -276,7 +334,13 @@
  *
  *  @return 加完水印的图片
  */
-- (UIImage*)imageWaterMarkWithString:(NSString*)str point:(CGPoint)strPoint attribute:(NSDictionary*)attri image:(UIImage*)image imagePoint:(CGPoint)imgPoint alpha:(CGFloat)alpha;
+- (UIImage*)imageWaterMarkWithString:(NSString*)str
+                               point:(CGPoint)strPoint
+                           attribute:(NSDictionary*)attri
+                               image:(UIImage*)image
+                          imagePoint:(CGPoint)imgPoint
+                               alpha:(CGFloat)alpha;
+
 /**
  *  同上
  *
@@ -289,6 +353,11 @@
  *
  *  @return 同上
  */
-- (UIImage*)imageWaterMarkWithString:(NSString*)str rect:(CGRect)strRect attribute:(NSDictionary *)attri image:(UIImage *)image imageRect:(CGRect)imgRect alpha:(CGFloat)alpha;
+- (UIImage*)imageWaterMarkWithString:(NSString*)str
+                                rect:(CGRect)strRect
+                           attribute:(NSDictionary *)attri
+                               image:(UIImage *)image
+                           imageRect:(CGRect)imgRect
+                               alpha:(CGFloat)alpha;
 
 @end

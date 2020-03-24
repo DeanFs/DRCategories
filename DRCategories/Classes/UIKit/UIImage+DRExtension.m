@@ -283,6 +283,72 @@
     return image;
 }
 
+/// 创建指定纯色底，白色字图片
+/// @param bgColor 图片底色
+/// @param size 图片尺寸
+/// @param text 文字
+/// @param lineBreakMode 文字换行模式
++ (UIImage *)imageWithBgColor:(UIColor *)bgColor
+                         size:(CGSize)size
+                         text:(NSString *)text
+                         mode:(NSLineBreakMode)lineBreakMode {
+    return [self imageWithBgColor:bgColor
+                        textColor:[UIColor whiteColor]
+                             size:size text:text
+                             mode:lineBreakMode];
+}
+
+/// 构建纯色底，指定颜色图片文字图片
+/// @param bgColor 底色
+/// @param textColor 文字颜色
+/// @param size 图片尺寸
+/// @param text 文字内容
+/// @param lineBreakMode 文字换行模式
++ (UIImage *)imageWithBgColor:(UIColor *)bgColor
+                    textColor:(UIColor *)textColor
+                         size:(CGSize)size
+                         text:(NSString *)text
+                         mode:(NSLineBreakMode)lineBreakMode {
+    if (size.width <= 0 || size.height <= 0 || text.length == 0) {
+        return nil;
+    }
+    if (bgColor == nil) {
+        bgColor = [UIColor grayColor];
+    }
+    if (textColor == nil) {
+        textColor = [UIColor blackColor];
+    }
+    NSString *key = [NSString stringWithFormat:@"text_image_%@%@%@%@%ld", [self rgbaStringFromColor:bgColor], [self rgbaStringFromColor:textColor], NSStringFromCGSize(size), text, (long)lineBreakMode];
+    UIImage *image = [self imageForKey:key];
+    if (image != nil) {
+        return image;
+    }
+    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, bgColor.CGColor);
+    CGContextFillRect(context, rect);
+    
+    UIFont *font = [UIFont boldSystemFontOfSize:13];
+    NSMutableDictionary *attr = @{NSFontAttributeName: font, NSForegroundColorAttributeName : textColor }.mutableCopy;
+    if (lineBreakMode != NSLineBreakByWordWrapping) {
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineBreakMode = lineBreakMode;
+        attr[NSParagraphStyleAttributeName] = paragraphStyle;
+    }
+    CGRect textRect = [text boundingRectWithSize:size
+                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                      attributes:attr context:nil];
+    [text drawInRect:CGRectMake(size.width / 2 - textRect.size.width / 2,
+                                size.height / 2 - textRect.size.height / 2,
+                                textRect.size.width,
+                                textRect.size.height) withAttributes:attr];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self cacheImage:image forKey:key];
+    return image;
+}
+
 #pragma mark - 截图
 // scale = 0.0
 + (UIImage *)screenshot {
@@ -673,6 +739,90 @@
     CGContextFillRect(context, rect);
     UIImage*newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    return newImage;
+}
+
+// 图片裁剪圆角
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius {
+    return [self imageByRoundCornerRadius:radius borderWidth:0 borderColor:nil];
+}
+
+// 裁剪圆角并绘制线圈
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius
+                          borderWidth:(CGFloat)borderWidth
+                          borderColor:(UIColor *)borderColor {
+    return [self imageByRoundCornerRadius:radius
+                                  corners:UIRectCornerAllCorners
+                              borderWidth:borderWidth
+                              borderColor:borderColor
+                           borderLineJoin:kCGLineJoinMiter];
+}
+
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius
+                              corners:(UIRectCorner)corners
+                          borderWidth:(CGFloat)borderWidth
+                          borderColor:(UIColor *)borderColor
+                       borderLineJoin:(CGLineJoin)borderLineJoin {
+    if (corners != UIRectCornerAllCorners) {
+        UIRectCorner tmp = 0;
+        if (corners & UIRectCornerTopLeft) tmp |= UIRectCornerBottomLeft;
+        if (corners & UIRectCornerTopRight) tmp |= UIRectCornerBottomRight;
+        if (corners & UIRectCornerBottomLeft) tmp |= UIRectCornerTopLeft;
+        if (corners & UIRectCornerBottomRight) tmp |= UIRectCornerTopRight;
+        corners = tmp;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    CGContextScaleCTM(context, 1, -1);
+    CGContextTranslateCTM(context, 0, -rect.size.height);
+    
+    CGFloat minSize = MIN(self.size.width, self.size.height);
+    if (borderWidth < minSize / 2) {
+        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, borderWidth, borderWidth) byRoundingCorners:corners cornerRadii:CGSizeMake(radius, borderWidth)];
+        [path closePath];
+        
+        CGContextSaveGState(context);
+        [path addClip];
+        CGContextDrawImage(context, rect, self.CGImage);
+        CGContextRestoreGState(context);
+    }
+    
+    if (borderColor && borderWidth < minSize / 2 && borderWidth > 0) {
+        CGFloat strokeInset = (floor(borderWidth * self.scale) + 0.5) / self.scale;
+        CGRect strokeRect = CGRectInset(rect, strokeInset, strokeInset);
+        CGFloat strokeRadius = radius > self.scale / 2 ? radius - self.scale / 2 : 0;
+        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:strokeRect byRoundingCorners:corners cornerRadii:CGSizeMake(strokeRadius, borderWidth)];
+        [path closePath];
+        
+        path.lineWidth = borderWidth;
+        path.lineJoinStyle = borderLineJoin;
+        [borderColor setStroke];
+        [path stroke];
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+// 文字图片重置大小
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize
+                      text:(NSString *)text
+                     color:(UIColor *)color {
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    UIFont *font = [UIFont boldSystemFontOfSize:13];
+    NSDictionary *attr = @{NSFontAttributeName: font, NSForegroundColorAttributeName : color };
+    [text drawInRect:CGRectMake(5, 12, 25, 13) withAttributes:attr];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
     return newImage;
 }
 

@@ -32,10 +32,10 @@
     }];
     kDR_LOG(@"结束：%@", datas);
     
-    kDR_LOG(@"%@", [@"67874738343" numberFormatWithMaxDecimalCount:2]);
-    kDR_LOG(@"%@", [@"526663.70" numberFormatWithMaxDecimalCount:2]);
-    kDR_LOG(@"%@", [@"63733649.888888" numberFormatWithMaxDecimalCount:2]);
-    kDR_LOG(@"%@", [@"-777888888888.25665673783" numberFormatWithMaxDecimalCount:5]);
+    kDR_LOG(@"%@", [@"67874738343" numberFormatWithMaxDecimalCount:2 isForce:YES]);
+    kDR_LOG(@"%@", [@"526663.0" numberFormatWithMaxDecimalCount:2 isForce:NO]);
+    kDR_LOG(@"%@", [@"63733649.888888" numberFormatWithMaxDecimalCount:2 isForce:NO]);
+    kDR_LOG(@"%@", [@"-777888888888.25665673783" numberFormatWithMaxDecimalCount:5 isForce:NO]);
     
     // 1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
     [NSDate setCalendarWeekFirstday:7];
