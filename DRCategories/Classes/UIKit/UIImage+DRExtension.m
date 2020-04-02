@@ -426,13 +426,13 @@
 /// @param scrollView scrollView
 /// @param color 截出图片背景色
 /// @param complete 完成回调
-+ (void)imageWithWithScrollView:(UIScrollView *)scrollView
-                        bgColor:(UIColor *)color
-                       complete:(void(^)(UIImage *image))complete {
-    [self imageWithWithScrollView:scrollView
-                          bgColor:color
-                            inset:UIEdgeInsetsZero
-                         complete:complete];
++ (void)imageWithScrollView:(UIScrollView *)scrollView
+                    bgColor:(UIColor *)color
+                   complete:(void(^)(UIImage *image))complete {
+    [self imageWithScrollView:scrollView
+                      bgColor:color
+                        inset:UIEdgeInsetsZero
+                     complete:complete];
 }
 
 /// 对scrollView内容截图（UITableView，UICollectionView）
@@ -440,10 +440,10 @@
 /// @param bgColor 截出图片背景色
 /// @param inset 截出图片与ScrollView的边缘的边距，正数表示比scrollView大
 /// @param complete 完成回调
-+ (void)imageWithWithScrollView:(UIScrollView *)scrollView
-                        bgColor:(UIColor *)bgColor
-                          inset:(UIEdgeInsets)inset
-                       complete:(void(^)(UIImage *image))complete {
++ (void)imageWithScrollView:(UIScrollView *)scrollView
+                    bgColor:(UIColor *)bgColor
+                      inset:(UIEdgeInsets)inset
+                   complete:(void(^)(UIImage *image))complete {
     dispatch_async(dispatch_get_main_queue(), ^{
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         UIImageView *coverView = [[UIImageView alloc] initWithImage:[UIImage imageFromView:keyWindow]];

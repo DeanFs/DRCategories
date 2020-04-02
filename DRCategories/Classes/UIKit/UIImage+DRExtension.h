@@ -204,19 +204,19 @@
 /// @param scrollView scrollView
 /// @param color 截出图片背景色
 /// @param complete 完成回调
-+ (void)imageWithWithScrollView:(UIScrollView *)scrollView
-                        bgColor:(UIColor *)color
-                       complete:(void(^)(UIImage *image))complete;
++ (void)imageWithScrollView:(UIScrollView *)scrollView
+                    bgColor:(UIColor *)color
+                   complete:(void(^)(UIImage *image))complete;
 
 /// 对scrollView内容截图（UITableView，UICollectionView）
 /// @param scrollView scrollView
 /// @param bgColor 截出图片背景色
 /// @param inset 截出图片与ScrollView的边缘的边距，正数表示比scrollView大
 /// @param complete 完成回调
-+ (void)imageWithWithScrollView:(UIScrollView *)scrollView
-                        bgColor:(UIColor *)bgColor
-                          inset:(UIEdgeInsets)inset
-                       complete:(void(^)(UIImage *image))complete;
++ (void)imageWithScrollView:(UIScrollView *)scrollView
+                    bgColor:(UIColor *)bgColor
+                      inset:(UIEdgeInsets)inset
+                   complete:(void(^)(UIImage *image))complete;
 
 /// 将视图拼接到一张图，透明背景，0边距
 /// @param appendViews 视图数组
