@@ -57,7 +57,7 @@
 /*
  关闭动画
  */
-- (void)dismissView;
+- (void)springDismissViewComplete:(dispatch_block_t)complete;
 
 /*
  透明动画

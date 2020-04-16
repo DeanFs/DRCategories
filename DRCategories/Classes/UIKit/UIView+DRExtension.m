@@ -198,7 +198,7 @@
     [self.layer pop_addAnimation:springAnimation forKey:@"SpringShowAnimation"];
 }
 
-- (void)dismissView {
+- (void)springDismissViewComplete:(dispatch_block_t)complete {
     [self.layer pop_removeAnimationForKey:@"SubscaleXY"];
     POPSpringAnimation* springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
     springAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
@@ -217,6 +217,7 @@
     
     opacity.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         [self removeFromSuperview];
+        kDR_SAFE_BLOCK(complete);
     };
 }
 
