@@ -12,6 +12,13 @@
 @implementation UITableView (DRExtension)
 
 /*
+ 使用Class来注册cell对象
+ */
+- (void)registerClass:(Class)aClass {
+    [self registerClass:aClass forCellReuseIdentifier:NSStringFromClass(aClass)];
+}
+
+/*
  使用nib来注册cell对象
  */
 - (void)registerNib:(NSString *)nibName {

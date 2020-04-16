@@ -11,6 +11,11 @@
 @interface UITableView (DRExtension)
 
 /*
+ 使用Class来注册cell对象
+ */
+- (void)registerClass:(Class)aClass;
+
+/*
  使用nib来注册cell对象
  */
 - (void)registerNib:(NSString *)nibName;
