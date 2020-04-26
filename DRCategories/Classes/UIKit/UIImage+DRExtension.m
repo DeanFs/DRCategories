@@ -10,6 +10,7 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRSandboxManager/DRSandboxManager.h>
 #import "CALayer+DRExtension.h"
+#import "UIFont+DRExtension.h"
 
 @implementation DRImageAppendImageView
 
@@ -309,6 +310,27 @@
                          size:(CGSize)size
                          text:(NSString *)text
                          mode:(NSLineBreakMode)lineBreakMode {
+    return [self imageWithBgColor:bgColor
+                        textColor:textColor
+                         textFont:nil
+                             size:size
+                             text:text
+                             mode:lineBreakMode];
+}
+
+/// 构建纯色底，指定颜色图片文字图片
+/// @param bgColor 底色
+/// @param textColor 文字颜色
+/// @param textFont 文字字体
+/// @param size 图片尺寸
+/// @param text 文字内容
+/// @param lineBreakMode 文字换行模式
++ (UIImage *)imageWithBgColor:(UIColor *)bgColor
+                    textColor:(UIColor *)textColor
+                     textFont:(UIFont *)textFont
+                         size:(CGSize)size
+                         text:(NSString *)text
+                         mode:(NSLineBreakMode)lineBreakMode {
     if (size.width <= 0 || size.height <= 0 || text.length == 0) {
         return nil;
     }
@@ -329,7 +351,10 @@
     CGContextSetFillColorWithColor(context, bgColor.CGColor);
     CGContextFillRect(context, rect);
     
-    UIFont *font = [UIFont boldSystemFontOfSize:13];
+    UIFont *font = textFont;
+    if (font == nil) {
+        font = [UIFont dr_PingFangSC_MediumWithSize:13];
+    }
     NSMutableDictionary *attr = @{NSFontAttributeName: font, NSForegroundColorAttributeName : textColor }.mutableCopy;
     if (lineBreakMode != NSLineBreakByWordWrapping) {
         NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];

@@ -176,6 +176,20 @@
                        text:(NSString *)text
                        mode:(NSLineBreakMode)lineBreakMode;
 
+/// 构建纯色底，指定颜色图片文字图片
+/// @param bgColor 底色
+/// @param textColor 文字颜色
+/// @param textFont 文字字体
+/// @param size 图片尺寸
+/// @param text 文字内容
+/// @param lineBreakMode 文字换行模式
++ (UIImage *)imageWithBgColor:(UIColor *)bgColor
+                    textColor:(UIColor *)textColor
+                     textFont:(UIFont *)textFont
+                         size:(CGSize)size
+                         text:(NSString *)text
+                         mode:(NSLineBreakMode)lineBreakMode;
+
 #pragma mark - 截图
 // 对当前屏幕截图截出屏幕大小的图
 + (UIImage *)screenshot;
