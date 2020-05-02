@@ -450,13 +450,16 @@
 /// 对scrollView内容截图（UITableView，UICollectionView）图片尺寸与ScrollView内容相等
 /// @param scrollView scrollView
 /// @param color 截出图片背景色
+/// @param showLoadingBlock 如果需要显示loading，需要在这个block中加
 /// @param complete 完成回调
 + (void)imageWithScrollView:(UIScrollView *)scrollView
                     bgColor:(UIColor *)color
+           showLoadingBlock:(dispatch_block_t)showLoadingBlock
                    complete:(void(^)(UIImage *image))complete {
     [self imageWithScrollView:scrollView
                       bgColor:color
                         inset:UIEdgeInsetsZero
+             showLoadingBlock:showLoadingBlock
                      complete:complete];
 }
 
@@ -464,10 +467,12 @@
 /// @param scrollView scrollView
 /// @param bgColor 截出图片背景色
 /// @param inset 截出图片与ScrollView的边缘的边距，正数表示比scrollView大
+/// @param showLoadingBlock 如果需要显示loading，需要在这个block中加
 /// @param complete 完成回调
 + (void)imageWithScrollView:(UIScrollView *)scrollView
                     bgColor:(UIColor *)bgColor
                       inset:(UIEdgeInsets)inset
+           showLoadingBlock:(dispatch_block_t)showLoadingBlock
                    complete:(void(^)(UIImage *image))complete {
     dispatch_async(dispatch_get_main_queue(), ^{
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
@@ -475,6 +480,7 @@
         coverView.userInteractionEnabled = YES;
         coverView.frame = keyWindow.bounds;
         [keyWindow addSubview:coverView];
+        kDR_SAFE_BLOCK(showLoadingBlock);
         CGPoint oldOffset = scrollView.contentOffset;
         
         CGSize contentSize = scrollView.contentSize;

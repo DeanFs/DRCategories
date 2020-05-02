@@ -217,19 +217,23 @@
 /// 对scrollView内容截图（UITableView，UICollectionView）图片尺寸与ScrollView内容相等
 /// @param scrollView scrollView
 /// @param color 截出图片背景色
+/// @param showLoadingBlock 如果需要显示loading，需要在这个block中加
 /// @param complete 完成回调
 + (void)imageWithScrollView:(UIScrollView *)scrollView
                     bgColor:(UIColor *)color
+           showLoadingBlock:(dispatch_block_t)showLoadingBlock
                    complete:(void(^)(UIImage *image))complete;
 
 /// 对scrollView内容截图（UITableView，UICollectionView）
 /// @param scrollView scrollView
 /// @param bgColor 截出图片背景色
 /// @param inset 截出图片与ScrollView的边缘的边距，正数表示比scrollView大
+/// @param showLoadingBlock 如果需要显示loading，需要在这个block中加
 /// @param complete 完成回调
 + (void)imageWithScrollView:(UIScrollView *)scrollView
                     bgColor:(UIColor *)bgColor
                       inset:(UIEdgeInsets)inset
+           showLoadingBlock:(dispatch_block_t)showLoadingBlock
                    complete:(void(^)(UIImage *image))complete;
 
 /// 将视图拼接到一张图，透明背景，0边距
