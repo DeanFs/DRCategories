@@ -571,9 +571,7 @@
         
         for (int row=0; row<[tableView numberOfRowsInSection:section]; row++) {
             NSIndexPath *cellIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
-            [tableView beginUpdates];
             [tableView scrollToRowAtIndexPath:cellIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-            [tableView endUpdates];
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:cellIndexPath];
             DRImageAppendImageView *cellAppendView = [DRImageAppendImageView appendImageViewWithView:cell x:x y:y];
             [appendViews addObject:cellAppendView];
