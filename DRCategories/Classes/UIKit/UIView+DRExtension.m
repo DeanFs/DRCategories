@@ -430,6 +430,32 @@
     [self.layer addSublayer:progressLayer];
 }
 
+
+#define kToRadian(A) (A/360.0 * (M_PI * 2))
+/// 添加类似苹果删除应用的抖动动画
+/// @param center 抖动物体相对于父视图的中心点坐标
+- (void)addShakeAnimationWithCenterPoint:(CGPoint)center {
+    CAKeyframeAnimation *shakeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
+    shakeAnimation.duration = 0.25;
+    shakeAnimation.values = @[@(kToRadian(1)), @(kToRadian(-1)), @(kToRadian(1))];
+    shakeAnimation.repeatCount = MAXFLOAT;
+    shakeAnimation.fillMode = kCAFillModeForwards;
+    [self.layer addAnimation:shakeAnimation forKey:@"shake"];
+    
+    UIBezierPath *bezierPath = [[UIBezierPath alloc] init];
+    [bezierPath moveToPoint:CGPointMake(center.x, center.y+1)];
+    [bezierPath addLineToPoint:CGPointMake(center.x, center.y-1)];
+    [bezierPath addLineToPoint:CGPointMake(center.x, center.y+1)];
+    
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animation];
+    positionAnimation.keyPath = @"position";
+    positionAnimation.duration = 0.6;
+    positionAnimation.path = bezierPath.CGPath;
+    positionAnimation.repeatCount = MAXFLOAT;
+    positionAnimation.fillMode = kCAFillModeForwards;
+    [self.layer addAnimation:positionAnimation forKey:@"position"];
+}
+
 @end
 
 

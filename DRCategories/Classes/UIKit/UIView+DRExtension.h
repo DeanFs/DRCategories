@@ -169,6 +169,10 @@
                                      toProgress:(CGFloat)toProgress
                                   completeBlock:(DRLayerAnimationCompleteBlock)completeBlock;
 
+/// 添加类似苹果删除应用的抖动动画
+/// @param center 抖动物体相对于父视图的中心点坐标
+- (void)addShakeAnimationWithCenterPoint:(CGPoint)center;
+
 @end
 
 
