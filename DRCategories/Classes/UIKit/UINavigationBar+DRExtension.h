@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationBar (DRExtension)
 
++ (CGFloat)statusBarHeight;
 + (CGFloat)navigationBarHeight;
 - (CGFloat)navigationBarHeight;
 + (BOOL )isIphoneXSeries;

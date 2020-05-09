@@ -10,9 +10,12 @@
 
 @implementation UINavigationBar (DRExtension)
 
++ (CGFloat)statusBarHeight {
+    return CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
+}
+
 + (CGFloat)navigationBarHeight {
-    CGFloat statusBarHeight = CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
-    return statusBarHeight + 44.0;
+    return [self statusBarHeight] + 44.0;
 }
 
 + (CGFloat)navigationBarTopHeight {
@@ -23,8 +26,7 @@
 }
 
 - (CGFloat)navigationBarHeight {
-    CGFloat statusBarHeight = CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
-    return statusBarHeight + self.height;
+    return [UINavigationBar statusBarHeight] + self.height;
 }
 
 + (BOOL )isIphoneXSeries {
