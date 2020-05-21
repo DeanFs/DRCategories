@@ -1793,13 +1793,13 @@ static mutex _mutex;
 }
 
 /// 获取当前日期的下周几的日期
-/// weekday=1,则获取下周一的日期，一次类推，取值只能1~7
+/// weekday=1,则获取下周一的日期，依次类推，取值只能1~7
 - (NSDate *)nextWeekDay:(NSInteger)weekday {
     if (weekday < 1 || weekday > 7) {
         return nil;
     }
     NSInteger currentWeekDay = [self weekday];
-    NSInteger nextDiff = 2 + (7 - currentWeekDay) + (weekday - 1);
+    NSInteger nextDiff = 2 + (7 - currentWeekDay - 7 * (currentWeekDay == 1)) + (weekday - 1);
     return [self nextDayWithCount:nextDiff];
 }
 

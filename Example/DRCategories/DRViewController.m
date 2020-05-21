@@ -51,9 +51,9 @@
         kDR_LOG(@"\n%@\n%@\n%@", numbers, numberTitles, weekTitles);
     }];
     
-    [NSDate setCalendarWeekFirstday:6];
-    NSInteger nextWeekDay = 1;
-    kDR_LOG(@"下周%ld 日期：%@", nextWeekDay, [[[NSDate date] nextWeekDay:nextWeekDay] dateWithFormatterString:@"yyyyMMdd"]);
+    [NSDate setCalendarWeekFirstday:2];
+    NSInteger nextWeekDay = 7;
+    kDR_LOG(@"下周%ld 日期：%@", nextWeekDay, [[[NSDate date].lastDayInThisWeek nextWeekDay:nextWeekDay] dateWithFormatterString:@"yyyyMMdd"]);
 }
 
 - (void)didReceiveMemoryWarning

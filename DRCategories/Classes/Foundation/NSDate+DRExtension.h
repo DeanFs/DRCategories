@@ -346,7 +346,7 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 //相对周起始日的序号，周起始日为1，取值1~7
 - (NSInteger)weekdayIndex;
 /// 获取当前日期的下周几的日期
-/// weekday=1,则获取下周一的日期，一次类推，取值只能1~7
+/// weekday=1,则获取下周一的日期，依次类推，取值只能1~7
 - (NSDate *)nextWeekDay:(NSInteger)weekday;
 //星期几 - 中文
 - (NSString *)weekdayString;
