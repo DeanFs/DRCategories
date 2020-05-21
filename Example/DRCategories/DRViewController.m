@@ -50,6 +50,10 @@
     [NSDate getWeekDayOrderComplete:^(NSArray<NSNumber *> *numbers, NSArray<NSString *> *numberTitles, NSArray<NSString *> *weekTitles) {
         kDR_LOG(@"\n%@\n%@\n%@", numbers, numberTitles, weekTitles);
     }];
+    
+    [NSDate setCalendarWeekFirstday:6];
+    NSInteger nextWeekDay = 1;
+    kDR_LOG(@"下周%ld 日期：%@", nextWeekDay, [[[NSDate date] nextWeekDay:nextWeekDay] dateWithFormatterString:@"yyyyMMdd"]);
 }
 
 - (void)didReceiveMemoryWarning
