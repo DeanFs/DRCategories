@@ -2424,7 +2424,7 @@ static mutex _mutex;
 
 // 获取星期几标题数组，如“一”，以周起始日开始排序
 + (NSArray<NSString *> *)weekDayNumberTitleArray {
-    NSArray *titleArray = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六",];
+    NSArray *titleArray = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];
     NSInteger firstWeekDay = [self weekFirstday] - 1;
     NSMutableArray *restltArray = [NSMutableArray array];
     for (NSInteger i = firstWeekDay; i < titleArray.count; i++) {
@@ -2439,7 +2439,7 @@ static mutex _mutex;
 
 // 获取周标题，如“周一”，以周起始日开始排序
 + (NSArray<NSString *> *)weekdayTitleArray {
-    NSArray *titleArray = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六",];
+    NSArray *titleArray = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
     NSInteger firstWeekDay = [self weekFirstday] - 1;
     NSMutableArray *restltArray = [NSMutableArray array];
     for (NSInteger i = firstWeekDay; i < titleArray.count; i++) {
@@ -2463,8 +2463,8 @@ static mutex _mutex;
     if (complete == nil) {
         return;
     }
-    NSArray *weekTitles = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六",];
-    NSArray *numTitles = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六",];
+    NSArray *weekTitles = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
+    NSArray *numTitles = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];
     NSArray *nums = @[@7, @1, @2, @3, @4, @5, @6];
     NSMutableArray *orderWeekTitles = [NSMutableArray array];
     NSMutableArray *orderNums = [NSMutableArray array];
