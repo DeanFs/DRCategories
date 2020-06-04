@@ -56,12 +56,14 @@
 + (NSString *)hourDescForTimeDuration:(int64_t)duration {
     NSString *timeString;
     if (duration > 0) {
-        if (duration >= 3600) {
+        if (duration >= 86400) {
+            timeString = [NSString stringWithFormat:@"%lld天", duration / 86400];
+        } else if (duration >= 3600) {
             CGFloat hour = duration / 3600.0;
             NSString *hourStr = [@(hour) stringValueWithDigit:1 isForce:NO block:nil];
             timeString = [NSString stringWithFormat:@"%@小时", hourStr];
         } else {
-            timeString = [NSString stringWithFormat:@"%lli分钟", duration / 60];
+            timeString = [NSString stringWithFormat:@"%lld分钟", duration / 60];
         }
     }
     return timeString;
