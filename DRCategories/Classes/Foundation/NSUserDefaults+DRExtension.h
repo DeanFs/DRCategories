@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSUserDefaults (DRExtension)
 
++ (void)setDefaultsGroupName:(NSString *)groupName;
+
 #pragma mark - 读取
 + (nullable id)objectForKey:(NSString *)defaultName;
 + (nullable NSString *)stringForKey:(NSString *)defaultName;

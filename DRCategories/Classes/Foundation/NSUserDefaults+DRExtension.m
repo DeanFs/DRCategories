@@ -5,11 +5,22 @@
 //  Created by 冯生伟 on 2019/3/8.
 //
 
-#define kUserGroupName @"group.com.huashengweilai.weilaiguanjia"
+static NSString *static_groupName;
 
 #import "NSUserDefaults+DRExtension.h"
 
 @implementation NSUserDefaults (DRExtension)
+
++ (void)setDefaultsGroupName:(NSString *)groupName {
+    static_groupName = groupName;
+}
+
++ (NSString *)groupName {
+    if (static_groupName.length == 0) {
+        return @"group.com.qichuangxinxi.shiguangxu-sgx";
+    }
+    return static_groupName;
+}
 
 #pragma mark - 读取
 + (nullable id)objectForKey:(NSString *)defaultName {
@@ -116,7 +127,7 @@
 
 + (void)clean {
     NSUserDefaults *groupDefault = [NSUserDefaults groupDefaults];
-    [groupDefault removePersistentDomainForName:kUserGroupName];
+    [groupDefault removePersistentDomainForName:[self groupName]];
     [groupDefault synchronize];
     
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
@@ -127,7 +138,7 @@
 
 #pragma mark - 自定义组设置
 + (NSUserDefaults *)groupDefaults {
-    return [[NSUserDefaults alloc] initWithSuiteName:kUserGroupName];
+    return [[NSUserDefaults alloc] initWithSuiteName:[self groupName]];
 }
 
 @end
